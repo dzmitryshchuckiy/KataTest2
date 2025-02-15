@@ -4,39 +4,39 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            System.out.println(calc("VI / III")); // Output: II
-            System.out.println(calc("1 + 2"));    // Output: 3
+            System.out.println(calc("VI / III"));
+            System.out.println(calc("1 + 2"));
         } catch (Exception e) {
             System.out.println("throws Exception: " + e.getMessage());
         }
     }
 
     public static String calc(String input) throws Exception {
-        // Проверяем формат ввода
+
         if (!input.matches("\\w+ [\\+\\-\\*/] \\w+")) {
             throw new Exception("Неверный формат выражения");
         }
 
-        // Разделяем строку на части
+
         String[] parts = input.split(" ");
         String operand1 = parts[0];
         String operator = parts[1];
         String operand2 = parts[2];
 
-        // Определяем тип чисел
+
         boolean isArabic = operand1.matches("\\d+");
         int num1 = isArabic ? Integer.parseInt(operand1) : romanToArabic(operand1);
         int num2 = isArabic ? Integer.parseInt(operand2) : romanToArabic(operand2);
 
-        // Проверяем диапазон чисел
+
         if (num1 < 1 || num1 > 10 || num2 < 1 || num2 > 10) {
             throw new Exception("Числа должны быть от 1 до 10");
         }
 
-        // Выполняем операцию
+
         int result = performOperation(num1, num2, operator);
 
-        // Возвращаем результат
+
         return isArabic ? String.valueOf(result) : arabicToRoman(result);
     }
 
