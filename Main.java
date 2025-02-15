@@ -13,9 +13,7 @@ public class Main {
 
     public static String calc(String input) throws Exception {
 
-        if (!input.matches("\\w+ [\\+\\-\\*/] \\w+")) {
-            throw new Exception("Неверный формат выражения");
-        }
+        if (!input.matches("\\w+ [\\+\\-\\*/] \\w+")) throw new Exception("Неверный формат выражения");
 
 
         String[] parts = input.split(" ");
